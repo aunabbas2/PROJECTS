@@ -1,0 +1,596 @@
+INCLUDE Irvine32.inc
+
+.data
+
+Text1 db "1 : Start Game ",0
+Text2 db "2 : INSTRUCTIONS",0
+Text3 db "3 : QUIT",0
+Text4 db "Press Key : ",0
+
+.code
+
+main PROC 
+	
+	MainMenu:
+	call PrintLogo
+
+	mov dh,18
+	mov dl,48
+	call gotoxy
+	mov edx,offset Text1
+	call writeString
+	mov dh,19
+	mov dl,48
+	call gotoxy
+
+	mov edx,offset Text2
+	call writeString
+	mov dh,20
+	mov dl,48
+	call gotoxy
+	mov edx,offset Text3
+	call writeString
+	mov dh,21
+	mov dl,48
+	call gotoxy
+	mov edx,offset Text4
+	call writeString
+
+	mov ecx,1
+	call ReadChar
+
+	cmp al,'3'
+	jne MainMenu
+exit
+main ENDP
+PrintLogo PROC
+	call LogoBorder
+	call Print_S
+	call Print_N
+	call Print_A
+	call Print_K
+	call Print_E
+	call Print_Dot
+	call Print_I
+	call Print_O
+
+	ret
+PrintLogo ENDP
+
+Print_S PROC
+
+;Printting S
+	mov al,'S'
+	mov dh,5
+	mov dl,20
+	call gotoxy
+	call WriteChar
+
+	add dh,1
+	call gotoxy
+	call WriteChar
+
+	add dh,1
+	call gotoxy
+	call WriteChar
+
+	add dh,1
+	call gotoxy
+	call WriteChar
+
+	add dh,1
+	call gotoxy
+	call WriteChar
+
+
+	add dh,1
+	add dl,1
+	call gotoxy
+	call WriteChar
+
+	add dl,1
+	call gotoxy
+	call WriteChar
+
+	add dl,1
+	call gotoxy
+	call WriteChar
+
+	add dl,1
+	call gotoxy
+	call WriteChar
+
+	add dl,1
+	call gotoxy
+	call WriteChar
+
+	mov dh,5
+	call gotoxy
+	call WriteChar
+	sub dl,1
+	call gotoxy
+	call WriteChar
+	sub dl,1
+	call gotoxy
+	call WriteChar
+	sub dl,1
+	call gotoxy
+	call WriteChar
+	sub dl,1
+	call gotoxy
+	call WriteChar
+
+
+	mov dh,11
+	add dl,5
+	call gotoxy
+	call WriteChar
+
+	inc dh
+	call gotoxy
+	call WriteChar
+	inc dh
+	call gotoxy
+	call WriteChar
+	inc dh
+	call gotoxy
+	call WriteChar
+	inc dh
+	call gotoxy
+	call WriteChar
+	
+	dec dl
+	call gotoxy
+	call WriteChar
+
+	dec dl
+	call gotoxy
+	call WriteChar
+
+	dec dl
+	call gotoxy
+	call WriteChar
+
+	dec dl
+	call gotoxy
+	call WriteChar
+
+	dec dl
+	call gotoxy
+	call WriteChar
+	
+	ret
+Print_S ENDP
+
+Print_N PROC
+mov al,'N'
+
+mov ecx,0
+mov dh,5
+mov dl, 29
+
+.while(ecx<11)
+call gotoxy 
+call WriteChar
+
+inc dh
+inc ecx
+.endw
+	
+	mov dh,6
+	mov dl,30
+	call gotoxy 
+	call WriteChar
+
+	inc dh
+	call gotoxy 
+	call WriteChar
+
+	inc dl
+	inc dh
+	call gotoxy 
+	call WriteChar
+
+	inc dh
+	call gotoxy 
+	call WriteChar
+
+	inc dl
+	inc dh
+	call gotoxy 
+	call WriteChar
+
+	inc dh
+	call gotoxy 
+	call WriteChar
+
+	inc dl
+	inc dh
+	call gotoxy 
+	call WriteChar
+
+	inc dh
+	call gotoxy 
+	call WriteChar
+
+	inc dl
+	inc dh
+	call gotoxy 
+	call WriteChar
+
+	inc dh
+	inc dl
+	mov ecx,0
+
+	.while( ecx<11)
+	call gotoxy 
+	call WriteChar
+	dec dh
+
+	inc ecx
+	.endw
+
+	ret
+Print_N ENDP
+
+Print_A PROC
+
+
+mov al,'A'
+
+mov dh,6
+mov dl,38
+mov ecx,0
+.while(ecx<10)
+call gotoxy 
+	call WriteChar
+
+inc dh
+inc ecx
+.endw
+
+mov dh,5
+mov dl,39
+mov ecx,0
+.while(ecx<6)
+call gotoxy 
+	call WriteChar
+
+inc dl
+inc ecx
+.endw
+
+
+mov dh,10
+mov dl,39
+mov ecx,0
+.while(ecx<6)
+call gotoxy 
+	call WriteChar
+
+inc dl
+inc ecx
+.endw
+
+
+mov dh,6
+mov ecx,0
+.while(ecx<10)
+call gotoxy 
+	call WriteChar
+
+inc dh
+inc ecx
+.endw
+
+ret
+Print_A ENDP
+
+Print_K PROC
+
+
+mov al,'K'
+
+mov dh,5
+mov dl,48
+mov ecx,0
+.while(ecx<11)
+call gotoxy
+call writeChar
+
+inc dh
+inc ecx
+.endw
+
+mov dl,49
+
+mov dh,9
+call gotoxy
+call writeChar
+
+inc dh
+call gotoxy
+call writeChar
+
+inc dh
+call gotoxy
+call writeChar
+
+inc dl
+
+mov dh,7
+call gotoxy
+call writeChar
+
+mov dh,8
+call gotoxy
+call writeChar
+
+mov dh,12
+call gotoxy
+call writeChar
+
+mov dh,13
+call gotoxy
+call writeChar
+
+inc dl
+
+mov dh,6
+call gotoxy
+call writeChar
+
+mov dh,14
+call gotoxy
+call writeChar
+
+inc dl
+mov dh,5
+call gotoxy
+call writeChar
+
+mov dh,15
+call gotoxy
+call writeChar
+
+ret
+Print_K ENDP
+
+
+Print_E PROC
+
+mov al,'E'
+
+mov dh,5
+mov dl,55
+
+mov ecx,0
+.while(ecx<11)
+
+call gotoxy
+call writeChar
+
+inc dh
+inc ecx
+.endw
+
+mov dh,5
+mov dl,55
+mov ecx,0
+.while(ecx<6)
+call gotoxy
+call writeChar
+inc dl
+inc ecx
+.endw
+
+mov dh,10
+mov dl,55
+mov ecx,0
+.while(ecx<6)
+call gotoxy
+call writeChar
+inc dl
+inc ecx
+.endw
+
+
+mov dh,15
+mov dl,55
+mov ecx,0
+.while(ecx<6)
+call gotoxy
+call writeChar
+inc dl
+inc ecx
+.endw
+
+ret
+Print_E ENDP
+
+Print_Dot PROC
+
+mov al,'0'
+mov dh,13
+mov dl,63
+call gotoxy
+call writeChar
+
+mov dh,14
+call gotoxy
+call writeChar
+
+mov dh,15
+call gotoxy
+call writeChar
+
+
+mov dh,13
+mov dl,64
+call gotoxy
+call writeChar
+
+mov dh,13
+mov dl,65
+call gotoxy
+call writeChar
+
+mov dh,14
+mov dl,64
+call gotoxy
+call writeChar
+
+mov dh,14
+mov dl,65
+call gotoxy
+call writeChar
+
+mov dh,15
+mov dl,64
+call gotoxy
+call writeChar
+
+mov dh,15
+mov dl,65
+call gotoxy
+call writeChar
+
+ret
+Print_Dot ENDP
+
+;68
+Print_I PROC
+
+mov al,'I'
+
+mov dh,5
+mov dl,68
+mov ecx,0
+.while(ecx<7)
+call gotoxy
+call WriteChar
+inc dl
+inc ecx
+.endw
+
+mov dl,71
+mov ecx,0
+.while(ecx<11)
+call gotoxy
+call WriteChar
+inc dh
+inc ecx
+.endw
+
+mov dh,15
+mov dl,68
+mov ecx,0
+.while(ecx<7)
+call gotoxy
+call WriteChar
+inc dl
+inc ecx
+.endw
+
+ret
+Print_I ENDP
+
+;77
+Print_O PROC
+mov al,'O'
+mov dh,5
+mov dl,78
+mov ecx,0
+
+.while(ecx<7)
+call gotoxy
+call WriteChar
+inc dl
+inc ecx
+.endw
+
+mov dl,77
+mov dh,6
+mov ecx,0
+.while(ecx<9)
+call gotoxy
+call WriteChar
+inc dh
+inc ecx
+.endw
+
+
+mov dh,15
+mov dl,78
+mov ecx,0
+
+.while(ecx<7)
+call gotoxy
+call WriteChar
+inc dl
+inc ecx
+.endw
+
+mov dl,85
+mov dh,6
+mov ecx,0
+.while(ecx<9)
+call gotoxy
+call WriteChar
+inc dh
+inc ecx
+.endw
+
+ret
+Print_O ENDP
+
+LogoBorder PROC
+
+mov al,'-'
+
+mov dh,4
+mov dl,20
+mov ecx,0
+.while(ecx<66)
+call gotoxy
+call WriteChar
+inc dl
+inc ecx
+.endw
+
+mov  al,'|'
+mov dh,5
+mov dl,19
+mov ecx,0
+.while(ecx<11)
+call gotoxy
+call WriteChar
+inc dh
+inc ecx
+.endw
+
+mov dh,5
+mov dl,86
+mov ecx,0
+.while(ecx<11)
+call gotoxy
+call WriteChar
+inc dh
+inc ecx
+.endw
+
+mov al,'-'
+
+mov dh,16
+mov dl,20
+mov ecx,0
+.while(ecx<66)
+call gotoxy
+call WriteChar
+inc dl
+inc ecx
+.endw
+ret
+LogoBorder ENDP
+
+End main
